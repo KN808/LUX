@@ -132,7 +132,6 @@
   // Lightbox logic
   const galleryImages = document.querySelectorAll('.gallery-item');
 galleryImages.forEach(img => img.classList.add('clickable'));
-galleryImages.forEach(img => img.classList.add('clickable'));
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
@@ -158,6 +157,9 @@ galleryImages.forEach(img => img.classList.add('clickable'));
       lightboxImg.style.transform = 'scale(1)';
       lightboxImg.style.opacity = '1';
     });
+    document.body.style.overflow = 'hidden';
+  });
+});
     document.body.style.overflow = 'hidden';
   });
 });
