@@ -5,7 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lux Marketing Studio</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <script src="script.js" defer>  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.style.display || lightbox.style.display === 'none') return;
+    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
+    let index = imgs.findIndex(img => img.src === lightboxImg.src);
+    if (e.key === 'ArrowRight') {
+      index = (index + 1) % imgs.length;
+      lightboxImg.src = imgs[index].src;
+    }
+    if (e.key === 'ArrowLeft') {
+      index = (index - 1 + imgs.length) % imgs.length;
+      lightboxImg.src = imgs[index].src;
+    }
+  });
+
+  const leftArrow = document.createElement('span');
+  leftArrow.innerHTML = '&#10094;';
+  leftArrow.style.position = 'absolute';
+  leftArrow.style.left = '20px';
+  leftArrow.style.top = '50%';
+  leftArrow.style.transform = 'translateY(-50%)';
+  leftArrow.style.fontSize = '2rem';
+  leftArrow.style.color = 'white';
+  leftArrow.style.cursor = 'pointer';
+  lightbox.appendChild(leftArrow);
+
+  const rightArrow = document.createElement('span');
+  rightArrow.innerHTML = '&#10095;';
+  rightArrow.style.position = 'absolute';
+  rightArrow.style.right = '20px';
+  rightArrow.style.top = '50%';
+  rightArrow.style.transform = 'translateY(-50%)';
+  rightArrow.style.fontSize = '2rem';
+  rightArrow.style.color = 'white';
+  rightArrow.style.cursor = 'pointer';
+  lightbox.appendChild(rightArrow);
+
+  leftArrow.addEventListener('click', () => {
+    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
+    let index = imgs.findIndex(img => img.src === lightboxImg.src);
+    index = (index - 1 + imgs.length) % imgs.length;
+    lightboxImg.src = imgs[index].src;
+  });
+
+  rightArrow.addEventListener('click', () => {
+    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
+    let index = imgs.findIndex(img => img.src === lightboxImg.src);
+    index = (index + 1) % imgs.length;
+    lightboxImg.src = imgs[index].src;
+  });
+</script>
   <style>
     html, body {
       margin: 0;
