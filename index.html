@@ -14,21 +14,36 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      backdrop-filter: blur(8px);
-      background-color: rgba(255, 255, 255, 0.2);
-      z-index: 1;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.4);
+      z-index: 5;
       pointer-events: none;
     }
 
-    .gallery-item {
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      z-index: 2;
+    .gallery {
       position: relative;
+      z-index: 0;
+    }
+
+    .gallery-item {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      position: relative;
+      z-index: 6;
+      max-width: 100%;
+      height: auto;
     }
 
     .gallery-item:hover {
-      transform: scale(1.75);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+      background-color: white;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+      z-index: 10;
     }
   </style>
   <script>
@@ -104,13 +119,13 @@
       <img src="images/chips5.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 5" />
       <img src="images/chips2.png" class="gallery-item funny photography" alt="Funny photography-style chips illustration" />
       <img src="images/braille1.png" class="gallery-item eye-catcher minimalistic photography" alt="Minimalistic braille concept art" />
-      <img src="images/83k vape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" />
-      <img src="images/83k pills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" />
-      <img src="images/83k pills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" />
-      <img src="images/83k drip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" />
-      <img src="images/83k drip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" />
-      <img src="images/83k vape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" />
-      <img src="images/83k pokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" />
+      <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" />
+      <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" />
+      <img src="images/83kpills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" />
+      <img src="images/83kdrip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" />
+      <img src="images/83kdrip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" />
+      <img src="images/83kvape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" />
+      <img src="images/83kpokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" />
       <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" />
     </div>
   </section>
