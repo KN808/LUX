@@ -26,8 +26,7 @@
   <h1 id="lux-title" style="font-size: 100px; margin: 0; font-weight: bold; letter-spacing: 2px;">LUX</h1>
   <p style="font-size: 30px; margin-top: 10px; font-style: italic;">GOOSEBUMPS FOR YOUR EYES.</p>
   
-  $1
-  <button id="snake-button" style="position: absolute; top: 60px; right: 30px; background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer;">Snake</button>
+  <a href="https://www.instagram.com/scharnofski" target="_blank" style="position: absolute; top: 20px; right: 30px; background: white; color: black; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px;">Contact</a>
 </header>
 
 <section id="gallery" class="section" style="background-color: black; color: white; text-align: center; padding: 0 40px;">
@@ -172,80 +171,6 @@
     touchEndX = e.changedTouches[0].screenX;
     if (touchEndX < touchStartX - 50) updateLightbox(currentIndex + 1);
     if (touchEndX > touchStartX + 50) updateLightbox(currentIndex - 1);
-  });
-  // Snake game logic
-  const snakeButton = document.getElementById('snake-button');
-  let snakeActive = false;
-  let snake, direction, snakeInterval, headerRect, snakeX, snakeY;
-
-  function createSnake() {
-    snake = document.createElement('div');
-    snake.style.position = 'absolute';
-    snake.style.width = '20px';
-    snake.style.height = '20px';
-    snake.style.background = 'lime';
-    snake.style.zIndex = '10';
-    document.querySelector('header').appendChild(snake);
-    headerRect = document.querySelector('header').getBoundingClientRect();
-    snakeX = headerRect.width / 2;
-    snakeY = headerRect.height / 2;
-    direction = 'right';
-    updateSnake();
-  }
-
-  function updateSnake() {
-    snake.style.left = `${snakeX}px`;
-    snake.style.top = `${snakeY}px`;
-  }
-
-  function moveSnake() {
-    if (direction === 'right') snakeX += 5;
-    if (direction === 'left') snakeX -= 5;
-    if (direction === 'up') snakeY -= 5;
-    if (direction === 'down') snakeY += 5;
-
-    // boundary collision
-    if (snakeX < 0 || snakeX > headerRect.width - 20 || snakeY < 0 || snakeY > headerRect.height - 20) {
-      direction = bounceDirection(direction);
-    }
-    updateSnake();
-  }
-
-  function bounceDirection(dir) {
-    if (dir === 'left') return 'right';
-    if (dir === 'right') return 'left';
-    if (dir === 'up') return 'down';
-    if (dir === 'down') return 'up';
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (!snakeActive) return;
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-      direction = e.key.replace('Arrow', '').toLowerCase();
-    }
-  });
-
-  function startSnake() {
-    createSnake();
-    snakeInterval = setInterval(moveSnake, 50);
-    setTimeout(() => {
-      if (snakeActive) stopSnake();
-    }, 30000);
-  }
-
-  function stopSnake() {
-    clearInterval(snakeInterval);
-    if (snake && snake.parentNode) snake.parentNode.removeChild(snake);
-    snakeActive = false;
-  }
-
-  snakeButton.addEventListener('click', () => {
-    if (!snakeActive) {
-      snakeActive = true;
-      startSnake();
-    } else {
-      stopSnake();
-    }
   });
 </script>
 </body>
