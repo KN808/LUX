@@ -15,6 +15,21 @@
     section {
       scroll-margin-top: 100px;
     }
+    .filter-btn {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: #00f0ff;
+      color: black;
+    }
   </style>
 </head>
 <body style="background-color: black; color: #ffffff; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0;">
@@ -30,12 +45,12 @@
     <button class="filter-btn" data-filter="photography">Photography</button>
     <button class="filter-btn" data-filter="cartoon">Cartoon</button>
     <button class="filter-btn" data-filter="eye-catcher">Eye-catcher</button>
-    <button class="filter-btn" data-filter="funny">Funny</button>
+    <button class="filter-btn" data-filter="humerous">Humerous</button>
   </div>
   <div class="gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; justify-items: center;">
-    <img src="images/chips4.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 4" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/chips5.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 5" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/chips2.png" class="gallery-item funny photography" alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/chips4.png" class="gallery-item $1humerous$2" alt="Cartoon style chips artwork 4" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/chips5.png" class="gallery-item $1humerous$2" alt="Cartoon style chips artwork 5" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/chips2.png" class="gallery-item $1humerous$2" alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/braille1.png" class="gallery-item eye-catcher minimalistic photography" alt="Minimalistic braille concept art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
@@ -43,8 +58,8 @@
     <img src="images/83kdrip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kdrip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kvape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/83kpokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kpokemon1.png" class="gallery-item $1humerous$2" alt="Cartoon-inspired Pokémon artwork" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/chips3.png" class="gallery-item $1humerous$2" alt="Black & white cartoon chips drawing" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
   </div>
 </section>
 
