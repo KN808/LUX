@@ -82,9 +82,16 @@
   <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" />
 </div>
   </section>
-  
 
-  <section id="about" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
+<!-- Lightbox Container -->
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999; transition:opacity 0.3s ease;">
+  <span id="lightbox-close" style="position:absolute; top:30px; right:40px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
+  <span id="left-arrow" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10094;</span>
+  <img id="lightbox-img" src="" alt="Enlarged view" style="width: 90vw; height: 90vh; object-fit: contain; box-shadow:0 0 40px rgba(255,255,255,0.2); border-radius:8px; transform: scale(0.9); opacity: 0; transition: transform 0.4s ease, opacity 0.4s ease;" />
+  <span id="right-arrow" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10095;</span>
+</div>
+
+<section id="about" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <h2>My Story</h2>
     <div class="storyline">
       <div class="story-block">
@@ -194,7 +201,6 @@
     if (touchEndX < touchStartX - 50) updateLightbox(currentIndex + 1);
     if (touchEndX > touchStartX + 50) updateLightbox(currentIndex - 1);
   });
-</script>
 </script>
 </body>
 </html>
