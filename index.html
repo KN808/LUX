@@ -144,5 +144,30 @@
   <footer style="background-color: #0d0d0d; color: white; text-align: center; padding: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
   <p>&copy; 2025 Lux Creative Studio</p>
 </footer>
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999; transition:opacity 0.3s ease;">
+  <span id="lightbox-close" style="position:absolute; top:30px; right:40px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
+  <img id="lightbox-img" src="" alt="" style="max-width:90%; max-height:90%; box-shadow:0 0 40px rgba(255,255,255,0.2); border-radius:8px;" />
+</div>
+<script>
+  const galleryImages = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  galleryImages.forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  });
+</script>
 </body>
 </html>
