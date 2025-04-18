@@ -24,64 +24,35 @@
 <body style="margin: 0; padding: 0; background-color: #0d0d0d; color: #ffffff; font-family: 'Helvetica Neue', sans-serif;">
   <header style="position: relative; background-color: black;">
   <div style="position: relative; width: 100%; overflow: hidden;">
-    <img src="images/LUX_home1.png" alt="LUX banner" style="width: 100%; height: auto; display: block; object-fit: contain;" />
-    
-    <nav style="position: sticky; top: 0; background-color: rgba(13,13,13,0.85); z-index: 100; padding: 10px 0; text-align: center;">
-      <ul style="display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; justify-content: center;">
-        <li><a href="#home" style="color: white; text-decoration: none; font-weight: bold;">Home</a></li>
-        
-        <li><a href="#gallery" style="color: white; text-decoration: none; font-weight: bold;">Creative Gems</a></li>
-        <li><a href="#about" style="color: white; text-decoration: none; font-weight: bold;">About</a></li>
-      </ul>
-    </nav>
-  </div>
-  <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 3;">
-    <a href="#home" style="display: inline-block; color: white; font-size: 2rem; text-decoration: none; animation: bounce 2s infinite;">&#x25BC;</a>
+    <img src="images/LUX_home1.png" alt="Homepage Banner" style="width: 100%; height: auto; display: block;" />
   </div>
 </header>
-<style>
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
-  }
-</style>
 
-  <section style="background-color: black; color: white; text-align: center; padding: 60px 20px;">
-    <h2>Elevate Your Brand with Visual Storytelling</h2>
-    <p>Minimalistic. Luxurious. Impactful.</p>
-    
-  </section>
-  
-
-  
-  
-
-  <section id="gallery" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
-    <h2>Creative Gems</h2>
-    <div class="filters" style="text-align: center;">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="minimalistic">Minimalistic</button>
-      <button class="filter-btn" data-filter="photography">Photography</button>
-      <button class="filter-btn" data-filter="cartoon">Cartoon</button>
-      <button class="filter-btn" data-filter="eye-catcher">Eye-catcher</button>
-      <button class="filter-btn" data-filter="funny">Funny</button>
-    </div>
-    <div class="gallery">
-  <img src="images/chips4.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 4" />
-  <img src="images/chips5.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 5" />
-  <img src="images/chips2.png" class="gallery-item funny photography" alt="Funny photography-style chips illustration" />
-  <img src="images/braille1.png" class="gallery-item eye-catcher minimalistic photography" alt="Minimalistic braille concept art" />
-  <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" />
-  <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" />
-  <img src="images/83kpills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" />
-  <img src="images/83kdrip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" />
-  <img src="images/83kdrip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" />
-  <img src="images/83kvape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" />
-  <img src="images/83kpokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" />
-  <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" />
-</div>
-  </section>
+<section id="gallery" class="section" style="background-color: #0d0d0d; color: white; text-align: center; padding: 40px;">
+  <h2>Creative Gems</h2>
+  <div class="filters" style="margin-bottom: 20px;">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="minimalistic">Minimalistic</button>
+    <button class="filter-btn" data-filter="photography">Photography</button>
+    <button class="filter-btn" data-filter="cartoon">Cartoon</button>
+    <button class="filter-btn" data-filter="eye-catcher">Eye-catcher</button>
+    <button class="filter-btn" data-filter="funny">Funny</button>
+  </div>
+  <div class="gallery" style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+    <img src="images/chips4.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 4" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/chips5.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 5" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/chips2.png" class="gallery-item funny photography" alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/braille1.png" class="gallery-item eye-catcher minimalistic photography" alt="Minimalistic braille concept art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kpills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kdrip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kdrip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kvape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/83kpokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+    <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+  </div>
+</section>
 
 <!-- Lightbox Container -->
 <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999; transition:opacity 0.3s ease;">
