@@ -8,17 +8,17 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Lux Marketing Studio</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Creative Gems</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header style="position: relative;">
+  <img src="images/LUX_home1.png" alt="LUX banner" style="width: 100%; height: auto; display: block;" />
+  <nav style="position: absolute; top: 20px; right: 40px;">
+    <ul style="display: flex; gap: 20px; list-style: none; margin: 0; padding: 0;">
+      <li><a href="#home" style="color: #ccc; text-decoration: none; font-weight: bold;">Home</a></li>
+      <li><a href="#services" style="color: #ccc; text-decoration: none; font-weight: bold;">Services</a></li>
+      <li><a href="#about" style="color: #ccc; text-decoration: none; font-weight: bold;">About</a></li>
+      <li><a href="#gallery" style="color: #ccc; text-decoration: none; font-weight: bold;">Creative Gems</a></li>
+    </ul>
+  </nav>
+</header>
 
   <section id="home" class="hero">
     <h2>Elevate Your Brand with Visual Storytelling</h2>
@@ -51,4 +51,32 @@
 
   <section id="gallery" class="section">
     <h2>Creative Gems</h2>
-    <div class="
+    <div class="filters">
+  <button data-filter="all">All</button>
+  <button data-filter="minimalistic">Minimalistic</button>
+  <button data-filter="photography">Photography</button>
+  <button data-filter="cartoon">Cartoon</button>
+  <button data-filter="eye-catcher">Eye-catcher</button>
+  <button data-filter="funny">Funny</button>
+</div>
+    <div class="gallery">
+      <img src="images/chips4.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 4" />
+      <img src="images/chips5.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 5" />
+      <img src="images/chips2.png" class="gallery-item funny photography" alt="Funny photography-style chips illustration" />
+      <img src="images/braille1.png" class="gallery-item eye-catcher minimalistic photography" alt="Minimalistic braille concept art" />
+      <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" />
+      <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" />
+      <img src="images/83kpills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" />
+      <img src="images/83kdrip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" />
+      <img src="images/83kdrip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" />
+      <img src="images/83kvape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" />
+      <img src="images/83kpokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" />
+      <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" />
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Lux Marketing Studio</p>
+  </footer>
+</body>
+</html>
