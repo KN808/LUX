@@ -6,7 +6,7 @@
   <title>Lux Marketing Studio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
-  <style>
+<style>
     body.blur-active::before {
       content: '';
       position: fixed;
@@ -14,21 +14,21 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       background-color: rgba(255, 255, 255, 0.2);
       z-index: 1;
       pointer-events: none;
     }
 
     .gallery-item {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       z-index: 2;
       position: relative;
     }
 
     .gallery-item:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transform: scale(1.75);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
     }
   </style>
   <script>
@@ -92,13 +92,13 @@
   <section id="gallery" class="section">
     <h2>Creative Gems</h2>
     <div class="filters">
-      <button data-filter="all">All</button>
-      <button data-filter="minimalistic">Minimalistic</button>
-      <button data-filter="photography">Photography</button>
-      <button data-filter="cartoon">Cartoon</button>
-      <button data-filter="eye-catcher">Eye-catcher</button>
-      <button data-filter="funny">Funny</button>
-    </div>
+  <button data-filter="all">All</button>
+  <button data-filter="minimalistic">Minimalistic</button>
+  <button data-filter="photography">Photography</button>
+  <button data-filter="cartoon">Cartoon</button>
+  <button data-filter="eye-catcher">Eye-catcher</button>
+  <button data-filter="funny">Funny</button>
+</div>
     <div class="gallery">
       <img src="images/chips4.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 4" />
       <img src="images/chips5.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 5" />
