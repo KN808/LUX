@@ -5,121 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lux Marketing Studio</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer>  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.style.display || lightbox.style.display === 'none') return;
-    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
-    let index = imgs.findIndex(img => img.src === lightboxImg.src);
-    if (e.key === 'ArrowRight') {
-      index = (index + 1) % imgs.length;
-      lightboxImg.src = imgs[index].src;
-    }
-    if (e.key === 'ArrowLeft') {
-      index = (index - 1 + imgs.length) % imgs.length;
-      lightboxImg.src = imgs[index].src;
-    }
-  });
-
-  const leftArrow = document.createElement('span');
-  leftArrow.innerHTML = '&#10094;';
-  leftArrow.style.position = 'absolute';
-  leftArrow.style.left = '20px';
-  leftArrow.style.top = '50%';
-  leftArrow.style.transform = 'translateY(-50%)';
-  leftArrow.style.fontSize = '2rem';
-  leftArrow.style.color = 'white';
-  leftArrow.style.cursor = 'pointer';
-  lightbox.appendChild(leftArrow);
-
-  const rightArrow = document.createElement('span');
-  rightArrow.innerHTML = '&#10095;';
-  rightArrow.style.position = 'absolute';
-  rightArrow.style.right = '20px';
-  rightArrow.style.top = '50%';
-  rightArrow.style.transform = 'translateY(-50%)';
-  rightArrow.style.fontSize = '2rem';
-  rightArrow.style.color = 'white';
-  rightArrow.style.cursor = 'pointer';
-  lightbox.appendChild(rightArrow);
-
-  leftArrow.addEventListener('click', () => {
-    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
-    let index = imgs.findIndex(img => img.src === lightboxImg.src);
-    index = (index - 1 + imgs.length) % imgs.length;
-    lightboxImg.src = imgs[index].src;
-  });
-
-  rightArrow.addEventListener('click', () => {
-    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
-    let index = imgs.findIndex(img => img.src === lightboxImg.src);
-    index = (index + 1) % imgs.length;
-    lightboxImg.src = imgs[index].src;
-  });
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
-    }
-  });
-
-  const leftArrow = document.createElement('span');
-  leftArrow.innerHTML = '&#10094;';
-  leftArrow.style.position = 'absolute';
-  leftArrow.style.left = '20px';
-  leftArrow.style.top = '50%';
-  leftArrow.style.transform = 'translateY(-50%)';
-  leftArrow.style.fontSize = '2rem';
-  leftArrow.style.color = 'white';
-  leftArrow.style.cursor = 'pointer';
-  lightbox.appendChild(leftArrow);
-
-  const rightArrow = document.createElement('span');
-  rightArrow.innerHTML = '&#10095;';
-  rightArrow.style.position = 'absolute';
-  rightArrow.style.right = '20px';
-  rightArrow.style.top = '50%';
-  rightArrow.style.transform = 'translateY(-50%)';
-  rightArrow.style.fontSize = '2rem';
-  rightArrow.style.color = 'white';
-  rightArrow.style.cursor = 'pointer';
-  lightbox.appendChild(rightArrow);
-
-  leftArrow.addEventListener('click', () => {
-    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
-    let index = imgs.findIndex(img => img.src === lightboxImg.src);
-    index = (index - 1 + imgs.length) % imgs.length;
-    lightboxImg.src = imgs[index].src;
-  });
-
-  rightArrow.addEventListener('click', () => {
-    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
-    let index = imgs.findIndex(img => img.src === lightboxImg.src);
-    index = (index + 1) % imgs.length;
-    lightboxImg.src = imgs[index].src;
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.style.display || lightbox.style.display === 'none') return;
-    const imgs = Array.from(document.querySelectorAll('.gallery-item'));
-    let index = imgs.findIndex(img => img.src === lightboxImg.src);
-    if (e.key === 'ArrowRight') {
-      index = (index + 1) % imgs.length;
-      lightboxImg.src = imgs[index].src;
-    }
-    if (e.key === 'ArrowLeft') {
-      index = (index - 1 + imgs.length) % imgs.length;
-      lightboxImg.src = imgs[index].src;
-    }
-  });
-</script>
+  
   <style>
     html, body {
       margin: 0;
@@ -149,7 +35,7 @@
     <nav style="position: sticky; top: 0; background-color: rgba(13,13,13,0.85); z-index: 100; padding: 10px 0; text-align: center;">
       <ul style="display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; justify-content: center;">
         <li><a href="#home" style="color: white; text-decoration: none; font-weight: bold;">Home</a></li>
-        <li><a href="#services" style="color: white; text-decoration: none; font-weight: bold;">Services</a></li>
+        
         <li><a href="#gallery" style="color: white; text-decoration: none; font-weight: bold;">Creative Gems</a></li>
         <li><a href="#about" style="color: white; text-decoration: none; font-weight: bold;">About</a></li>
       </ul>
@@ -170,18 +56,11 @@
   <section id="home" class="hero" style="background-color: #0d0d0d; color: white; padding: 100px 40px 60px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <h2>Elevate Your Brand with Visual Storytelling</h2>
     <p>Minimalistic. Luxurious. Impactful.</p>
-    <a href="#services" class="btn">Explore Services</a>
+    
   </section>
   
 
-  <section id="services" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
-    <h2>Services</h2>
-    <div class="cards" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-      <div class="card" style="flex: 1 1 250px; background: #e0e0e0; padding: 30px; border-radius: 12px; text-align: center;">Product Promotion</div>
-      <div class="card" style="flex: 1 1 250px; background: #e0e0e0; padding: 30px; border-radius: 12px; text-align: center;">Branding Campaigns</div>
-      <div class="card" style="flex: 1 1 250px; background: #e0e0e0; padding: 30px; border-radius: 12px; text-align: center;">Visual Content Creation</div>
-    </div>
-  </section>
+  
   
 
   <section id="gallery" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
@@ -227,20 +106,77 @@
   
 
   <script>
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (btn.classList.contains('active')) {
-      btn.classList.remove('active');
-    } else {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-  });
+  // Filter toggle behavior
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+      } else {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-      });
+      }
     });
-  </script>
+  });
+
+  // Lightbox logic
+  const galleryImages = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const leftArrow = document.getElementById('left-arrow');
+  const rightArrow = document.getElementById('right-arrow');
+
+  let currentIndex = -1;
+
+  function updateLightbox(index) {
+    const imgs = Array.from(galleryImages);
+    currentIndex = (index + imgs.length) % imgs.length;
+    lightboxImg.src = imgs[currentIndex].src;
+  }
+
+  galleryImages.forEach((img, index) => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      updateLightbox(index);
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  });
+
+  leftArrow.addEventListener('click', () => {
+    updateLightbox(currentIndex - 1);
+  });
+
+  rightArrow.addEventListener('click', () => {
+    updateLightbox(currentIndex + 1);
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'ArrowRight') updateLightbox(currentIndex + 1);
+      if (e.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
+      if (e.key === 'Escape') {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+    }
+  });
+</script>
   <style>
     .filter-btn {
       margin: 5px;
@@ -267,18 +203,30 @@
 </footer>
 <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999; transition:opacity 0.3s ease;">
   <span id="lightbox-close" style="position:absolute; top:30px; right:40px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
+  <span id="left-arrow" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10094;</span>
   <img id="lightbox-img" src="" alt="" style="max-width:90%; max-height:90%; box-shadow:0 0 40px rgba(255,255,255,0.2); border-radius:8px;" />
+  <span id="right-arrow" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10095;</span>
 </div>
 <script>
   const galleryImages = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
+  const leftArrow = document.getElementById('left-arrow');
+  const rightArrow = document.getElementById('right-arrow');
 
-  galleryImages.forEach(img => {
+  let currentIndex = -1;
+
+  function updateLightbox(index) {
+    const imgs = Array.from(galleryImages);
+    currentIndex = (index + imgs.length) % imgs.length;
+    lightboxImg.src = imgs[currentIndex].src;
+  }
+
+  galleryImages.forEach((img, index) => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
+      updateLightbox(index);
       lightbox.style.display = 'flex';
       document.body.style.overflow = 'hidden';
     });
@@ -288,6 +236,34 @@
     lightbox.style.display = 'none';
     lightboxImg.src = '';
     document.body.style.overflow = '';
+  });
+
+  leftArrow.addEventListener('click', () => {
+    updateLightbox(currentIndex - 1);
+  });
+
+  rightArrow.addEventListener('click', () => {
+    updateLightbox(currentIndex + 1);
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'ArrowRight') updateLightbox(currentIndex + 1);
+      if (e.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
+      if (e.key === 'Escape') {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+    }
   });
 </script>
 </body>
