@@ -132,6 +132,7 @@
   // Lightbox logic
   const galleryImages = document.querySelectorAll('.gallery-item');
 galleryImages.forEach(img => img.classList.add('clickable'));
+galleryImages.forEach(img => img.classList.add('clickable'));
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
@@ -147,27 +148,32 @@ galleryImages.forEach(img => img.classList.add('clickable'));
   }
 
   galleryImages.forEach((img, index) => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => {
-      updateLightbox(index);
-      lightbox.style.display = 'flex';
-      requestAnimationFrame(() => {
-        lightboxImg.style.transform = 'scale(1)';
-        lightboxImg.style.opacity = '1';
-      });
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => {
+    const visibleImgs = getVisibleImages();
+    const trueIndex = visibleImgs.findIndex(i => i === img);
+    updateLightbox(trueIndex);
+    lightbox.style.display = 'flex';
+    requestAnimationFrame(() => {
+      lightboxImg.style.transform = 'scale(1)';
+      lightboxImg.style.opacity = '1';
+    });
+    document.body.style.overflow = 'hidden';
+  });
+});
       document.body.style.overflow = 'hidden';
     });
   });
 
   lightboxClose.addEventListener('click', () => {
-    lightboxImg.style.transform = 'scale(0.9)';
-    lightboxImg.style.opacity = '0';
-    setTimeout(() => {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-    }, 300);
+  lightboxImg.style.transform = 'scale(0.9)';
+  lightboxImg.style.opacity = '0';
+  setTimeout(() => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
     document.body.style.overflow = '';
-  });
+  }, 300);
+});
 
   leftArrow.addEventListener('click', () => {
     updateLightbox(currentIndex - 1);
@@ -178,12 +184,16 @@ galleryImages.forEach(img => img.classList.add('clickable'));
   });
 
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
+  if (e.target === lightbox) {
+    lightboxImg.style.transform = 'scale(0.9)';
+    lightboxImg.style.opacity = '0';
+    setTimeout(() => {
       lightbox.style.display = 'none';
       lightboxImg.src = '';
       document.body.style.overflow = '';
-    }
-  });
+    }, 300);
+  }
+});
 
   document.addEventListener('keydown', (e) => {
     if (lightbox.style.display === 'flex') {
