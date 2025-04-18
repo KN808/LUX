@@ -19,16 +19,10 @@
     section {
       scroll-margin-top: 100px;
     }
-    .divider {
-      width: 80%;
-      margin: 60px auto;
-      border: 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-    }
-  </style>
+</style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #0d0d0d; color: #ffffff; font-family: 'Helvetica Neue', sans-serif;">
-  <header style="position: relative;">
+  <header style="position: relative; background-color: black;">
   <div style="position: relative; width: 100%; overflow: hidden;">
     <img src="images/LUX_home1.png" alt="LUX banner" style="width: 100%; height: auto; display: block; object-fit: contain;" />
     
@@ -53,7 +47,7 @@
   }
 </style>
 
-  <section id="home" class="hero" style="background-color: #0d0d0d; color: white; padding: 100px 40px 60px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);">
+  <section style="background-color: black; color: white; text-align: center; padding: 60px 20px;">
     <h2>Elevate Your Brand with Visual Storytelling</h2>
     <p>Minimalistic. Luxurious. Impactful.</p>
     
@@ -131,117 +125,6 @@
 
   // Lightbox logic
   const galleryImages = document.querySelectorAll('.gallery-item');
-galleryImages.forEach(img => img.classList.add('clickable'));
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxClose = document.getElementById('lightbox-close');
-  const leftArrow = document.getElementById('left-arrow');
-  const rightArrow = document.getElementById('right-arrow');
-
-  let currentIndex = -1;
-
-  function updateLightbox(index) {
-    const imgs = Array.from(galleryImages);
-    currentIndex = (index + imgs.length) % imgs.length;
-    lightboxImg.src = imgs[currentIndex].src;
-  }
-
-  galleryImages.forEach((img, index) => {
-  img.style.cursor = 'pointer';
-  img.addEventListener('click', () => {
-    const visibleImgs = getVisibleImages();
-    const trueIndex = visibleImgs.findIndex(i => i === img);
-    updateLightbox(trueIndex);
-    lightbox.style.display = 'flex';
-    requestAnimationFrame(() => {
-      lightboxImg.style.transform = 'scale(1)';
-      lightboxImg.style.opacity = '1';
-    });
-    document.body.style.overflow = 'hidden';
-  });
-});
-    document.body.style.overflow = 'hidden';
-  });
-});
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  lightboxClose.addEventListener('click', () => {
-  lightboxImg.style.transform = 'scale(0.9)';
-  lightboxImg.style.opacity = '0';
-  setTimeout(() => {
-    lightbox.style.display = 'none';
-    lightboxImg.src = '';
-    document.body.style.overflow = '';
-  }, 300);
-});
-
-  leftArrow.addEventListener('click', () => {
-    updateLightbox(currentIndex - 1);
-  });
-
-  rightArrow.addEventListener('click', () => {
-    updateLightbox(currentIndex + 1);
-  });
-
-  lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) {
-    lightboxImg.style.transform = 'scale(0.9)';
-    lightboxImg.style.opacity = '0';
-    setTimeout(() => {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
-    }, 300);
-  }
-});
-
-  document.addEventListener('keydown', (e) => {
-    if (lightbox.style.display === 'flex') {
-      if (e.key === 'ArrowRight') updateLightbox(currentIndex + 1);
-      if (e.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
-      if (e.key === 'Escape') {
-        lightbox.style.display = 'none';
-        lightboxImg.src = '';
-        document.body.style.overflow = '';
-      }
-    }
-  });
-</script>
-  <style>
-    .gallery-item.clickable { cursor: pointer; }
-    .filter-btn {
-      margin: 5px;
-      padding: 8px 16px;
-      border: none;
-      background: #333;
-      color: white;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .filter-btn.active {
-      background-color: #00f0ff;
-      color: black;
-    }
-    .filter-btn:hover {
-      background-color: #00f0ff;
-      color: black;
-    }
-  </style>
-
-  <footer style="background-color: #0d0d0d; color: white; text-align: center; padding: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
-  <p>&copy; 2025 Lux Creative Studio</p>
-</footer>
-<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999; transition:opacity 0.3s ease;">
-  <span id="lightbox-close" style="position:absolute; top:30px; right:40px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
-  <span id="left-arrow" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10094;</span>
-  <img id="lightbox-img" src="" alt="" style="width: 90vw; height: 90vh; object-fit: contain; box-shadow:0 0 40px rgba(255,255,255,0.2); border-radius:8px; transform: scale(0.9); opacity: 0; transition: transform 0.4s ease, opacity 0.4s ease;" />
-  <span id="right-arrow" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10095;</span>
-</div>
-<script>
-  const galleryImages = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
@@ -258,10 +141,13 @@ galleryImages.forEach(img => img.classList.add('clickable'));
     const visibleImgs = getVisibleImages();
     currentIndex = (index + visibleImgs.length) % visibleImgs.length;
     lightboxImg.src = visibleImgs[currentIndex].src;
+    requestAnimationFrame(() => {
+      lightboxImg.style.transform = 'scale(1)';
+      lightboxImg.style.opacity = '1';
+    });
   }
 
-  galleryImages.forEach((img, index) => {
-    img.style.cursor = 'pointer';
+  galleryImages.forEach((img) => {
     img.addEventListener('click', () => {
       const visibleImgs = getVisibleImages();
       const trueIndex = visibleImgs.findIndex(i => i === img);
@@ -271,40 +157,31 @@ galleryImages.forEach(img => img.classList.add('clickable'));
     });
   });
 
-  lightboxClose.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    lightboxImg.src = '';
-    document.body.style.overflow = '';
-  });
-
-  leftArrow.addEventListener('click', () => {
-    updateLightbox(currentIndex - 1);
-  });
-
-  rightArrow.addEventListener('click', () => {
-    updateLightbox(currentIndex + 1);
-  });
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
+  function closeLightbox() {
+    lightboxImg.style.transform = 'scale(0.9)';
+    lightboxImg.style.opacity = '0';
+    setTimeout(() => {
       lightbox.style.display = 'none';
       lightboxImg.src = '';
       document.body.style.overflow = '';
-    }
-  });
+    }, 300);
+  }
 
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  leftArrow.addEventListener('click', () => updateLightbox(currentIndex - 1));
+  rightArrow.addEventListener('click', () => updateLightbox(currentIndex + 1));
   document.addEventListener('keydown', (e) => {
     if (lightbox.style.display === 'flex') {
       if (e.key === 'ArrowRight') updateLightbox(currentIndex + 1);
       if (e.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
-      if (e.key === 'Escape') {
-        lightbox.style.display = 'none';
-        lightboxImg.src = '';
-        document.body.style.overflow = '';
-      }
+      if (e.key === 'Escape') closeLightbox();
     }
   });
-  // Touch swipe support
+
+  // Swipe gesture support
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -314,17 +191,10 @@ galleryImages.forEach(img => img.classList.add('clickable'));
 
   lightbox.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
+    if (touchEndX < touchStartX - 50) updateLightbox(currentIndex + 1);
+    if (touchEndX > touchStartX + 50) updateLightbox(currentIndex - 1);
   });
-
-  function handleSwipe() {
-    if (touchEndX < touchStartX - 50) {
-      updateLightbox(currentIndex + 1); // swipe left
-    }
-    if (touchEndX > touchStartX + 50) {
-      updateLightbox(currentIndex - 1); // swipe right
-    }
-  }
+</script>
 </script>
 </body>
 </html>
