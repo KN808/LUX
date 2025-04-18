@@ -6,61 +6,6 @@
   <title>Lux Marketing Studio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
-<style>
-    body.blur-active::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.4);
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    .gallery {
-      position: relative;
-      z-index: 0;
-    }
-
-    .gallery-item {
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-      position: relative;
-      z-index: 6;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .gallery-item:hover {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain;
-      background-color: white;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
-      z-index: 10;
-    }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const galleryItems = document.querySelectorAll('.gallery-item');
-
-      galleryItems.forEach((item) => {
-        item.addEventListener('mouseenter', () => {
-          document.body.classList.add('blur-active');
-        });
-
-        item.addEventListener('mouseleave', () => {
-          document.body.classList.remove('blur-active');
-        });
-      });
-    });
-  </script>
 </head>
 <body>
   <header>
