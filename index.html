@@ -17,11 +17,28 @@
     color: #39ff14;
   }
 </style>
+<style>
+  .goose {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Goose_Silhouette.svg/120px-Goose_Silhouette.svg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: fly-right 3s linear forwards;
+  }
+
+  @keyframes fly-right {
+    0% { left: -50px; opacity: 1; }
+    100% { left: 100vw; opacity: 0; }
+  }
+</style>
 </head>
 <body style="background-color: black; color: #ffffff; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0;">
   <header style="background-color: black; text-align: center; padding: 80px 20px; position: relative;">
   <h1 style="font-size: 100px; margin: 0; font-weight: bold; letter-spacing: 2px; transition: color 3s ease;">LUX</h1>
-  <p style="font-size: 30px; margin-top: 10px; font-style: italic;">GOOSEBUMPS FOR YOUR EYES.</p>
+  <p id="goosebumps-text" style="font-size: 30px; margin-top: 10px; font-style: italic; position: relative; display: inline-block;">GOOSEBUMPS FOR YOUR EYES.</p>
   
   <a href="https://www.instagram.com/scharnofski" target="_blank" style="position: absolute; top: 20px; right: 30px; background: white; color: black; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px;">Contact</a>
 </header>
@@ -37,16 +54,13 @@
   </div>
   <div class="gallery" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; justify-items: center;">
     <img src="images/chips4.png" class="gallery-item $1humerous$2" alt="Cartoon style chips artwork 4" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/chips5.png" class="gallery-item $1humerous$2" alt="Cartoon style chips artwork 5" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/chips2.png" class="gallery-item $1humerous$2" alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+        <img src="images/chips2.png" class="gallery-item $1humerous$2" alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/braille1.png" class="gallery-item eye-catcher minimalistic photography" alt="Minimalistic braille concept art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kpills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kdrip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/83kdrip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/83kvape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
-    <img src="images/83kpokemon1.png" class="gallery-item $1humerous$2" alt="Cartoon-inspired Pokémon artwork" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+            <img src="images/83kpokemon1.png" class="gallery-item $1humerous$2" alt="Cartoon-inspired Pokémon artwork" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/chips3.png" class="gallery-item $1humerous$2" alt="Black & white cartoon chips drawing" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
   </div>
 </section>
@@ -156,6 +170,19 @@
     touchEndX = e.changedTouches[0].screenX;
     if (touchEndX < touchStartX - 50) updateLightbox(currentIndex + 1);
     if (touchEndX > touchStartX + 50) updateLightbox(currentIndex - 1);
+  });
+
+  // Geese animation on hover
+  document.getElementById('goosebumps-text').addEventListener('mouseenter', () => {
+    for (let i = 0; i < 7; i++) {
+      const goose = document.createElement('div');
+      goose.className = 'goose';
+      goose.style.top = `${Math.random() * 50}px`;
+      goose.style.left = `-${50 + i * 20}px`;
+      goose.style.animationDelay = `${i * 0.2}s`;
+      document.getElementById('goosebumps-text').appendChild(goose);
+      setTimeout(() => goose.remove(), 4000);
+    }
   });
 </script>
 </body>
