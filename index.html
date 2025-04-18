@@ -6,6 +6,46 @@
   <title>Lux Marketing Studio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
+  <style>
+    body.blur-active::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      backdrop-filter: blur(6px);
+      background-color: rgba(255, 255, 255, 0.2);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .gallery-item {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 2;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      galleryItems.forEach((item) => {
+        item.addEventListener('mouseenter', () => {
+          document.body.classList.add('blur-active');
+        });
+
+        item.addEventListener('mouseleave', () => {
+          document.body.classList.remove('blur-active');
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -52,25 +92,25 @@
   <section id="gallery" class="section">
     <h2>Creative Gems</h2>
     <div class="filters">
-  <button data-filter="all">All</button>
-  <button data-filter="minimalistic">Minimalistic</button>
-  <button data-filter="photography">Photography</button>
-  <button data-filter="cartoon">Cartoon</button>
-  <button data-filter="eye-catcher">Eye-catcher</button>
-  <button data-filter="funny">Funny</button>
-</div>
+      <button data-filter="all">All</button>
+      <button data-filter="minimalistic">Minimalistic</button>
+      <button data-filter="photography">Photography</button>
+      <button data-filter="cartoon">Cartoon</button>
+      <button data-filter="eye-catcher">Eye-catcher</button>
+      <button data-filter="funny">Funny</button>
+    </div>
     <div class="gallery">
       <img src="images/chips4.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 4" />
       <img src="images/chips5.png" class="gallery-item cartoon funny" alt="Cartoon style chips artwork 5" />
       <img src="images/chips2.png" class="gallery-item funny photography" alt="Funny photography-style chips illustration" />
       <img src="images/braille1.png" class="gallery-item eye-catcher minimalistic photography" alt="Minimalistic braille concept art" />
-      <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" />
-      <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" />
-      <img src="images/83kpills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" />
-      <img src="images/83kdrip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" />
-      <img src="images/83kdrip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" />
-      <img src="images/83kvape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" />
-      <img src="images/83kpokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" />
+      <img src="images/83k vape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" />
+      <img src="images/83k pills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" />
+      <img src="images/83k pills2.png" class="gallery-item eye-catcher photography" alt="Black & white photo of pills" />
+      <img src="images/83k drip1.png" class="gallery-item minimalistic photography bw" alt="Liquid drip effect art" />
+      <img src="images/83k drip2.png" class="gallery-item minimalistic photography bw" alt="Minimalistic drip detail" />
+      <img src="images/83k vape1.png" class="gallery-item photography minimalistic" alt="Photography of vape branding" />
+      <img src="images/83k pokemon1.png" class="gallery-item funny photography" alt="Cartoon-inspired Pokémon artwork" />
       <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" />
     </div>
   </section>
