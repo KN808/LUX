@@ -131,6 +131,7 @@
 
   // Lightbox logic
   const galleryImages = document.querySelectorAll('.gallery-item');
+galleryImages.forEach(img => img.classList.add('clickable'));
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
@@ -189,6 +190,7 @@
   });
 </script>
   <style>
+    .gallery-item.clickable { cursor: pointer; }
     .filter-btn {
       margin: 5px;
       padding: 8px 16px;
@@ -282,6 +284,27 @@
       }
     }
   });
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      updateLightbox(currentIndex + 1); // swipe left
+    }
+    if (touchEndX > touchStartX + 50) {
+      updateLightbox(currentIndex - 1); // swipe right
+    }
+  }
 </script>
 </body>
 </html>
