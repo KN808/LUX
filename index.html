@@ -151,13 +151,21 @@ galleryImages.forEach(img => img.classList.add('clickable'));
     img.addEventListener('click', () => {
       updateLightbox(index);
       lightbox.style.display = 'flex';
+      requestAnimationFrame(() => {
+        lightboxImg.style.transform = 'scale(1)';
+        lightboxImg.style.opacity = '1';
+      });
       document.body.style.overflow = 'hidden';
     });
   });
 
   lightboxClose.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    lightboxImg.src = '';
+    lightboxImg.style.transform = 'scale(0.9)';
+    lightboxImg.style.opacity = '0';
+    setTimeout(() => {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    }, 300);
     document.body.style.overflow = '';
   });
 
@@ -217,7 +225,7 @@ galleryImages.forEach(img => img.classList.add('clickable'));
 <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999; transition:opacity 0.3s ease;">
   <span id="lightbox-close" style="position:absolute; top:30px; right:40px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
   <span id="left-arrow" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10094;</span>
-  <img id="lightbox-img" src="" alt="" style="max-width:90%; max-height:90%; box-shadow:0 0 40px rgba(255,255,255,0.2); border-radius:8px;" />
+  <img id="lightbox-img" src="" alt="" style="width: 90vw; height: 90vh; object-fit: contain; box-shadow:0 0 40px rgba(255,255,255,0.2); border-radius:8px; transform: scale(0.9); opacity: 0; transition: transform 0.4s ease, opacity 0.4s ease;" />
   <span id="right-arrow" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; cursor:pointer;">&#10095;</span>
 </div>
 <script>
