@@ -172,7 +172,7 @@
     <p>Minimalistic. Luxurious. Impactful.</p>
     <a href="#services" class="btn">Explore Services</a>
   </section>
-  <hr class="divider" />
+  
 
   <section id="services" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <h2>Services</h2>
@@ -182,7 +182,7 @@
       <div class="card" style="flex: 1 1 250px; background: #e0e0e0; padding: 30px; border-radius: 12px; text-align: center;">Visual Content Creation</div>
     </div>
   </section>
-  <hr class="divider" />
+  
 
   <section id="gallery" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <h2>Creative Gems</h2>
@@ -209,7 +209,7 @@
   <img src="images/chips3.png" class="gallery-item cartoon funny" alt="Black & white cartoon chips drawing" />
 </div>
   </section>
-  <hr class="divider" />
+  
 
   <section id="about" class="section" style="background-color: #0d0d0d; color: white; border-bottom: 1px solid rgba(255,255,255,0.05);">
     <h2>My Story</h2>
@@ -224,11 +224,18 @@
       </div>
     </div>
   </section>
-  <hr class="divider" />
+  
 
   <script>
     document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('active')) {
+      btn.classList.remove('active');
+    } else {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  });
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
       });
