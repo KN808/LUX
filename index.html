@@ -16,31 +16,6 @@
   h1:hover {
     color: #39ff14;
   }
-
-  .hover-eyes {
-    color: white;
-    transition: color 3s ease;
-  }
-  .hover-eyes:hover {
-    color: black;
-  }
-
-  .filter-btn {
-    background: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: none;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 3s ease, color 3s ease;
-  }
-  .filter-btn:hover,
-  .filter-btn.active {
-    background-color: #39ff14;
-    color: black;
-  }
 </style>
 <style>
   .hover-eyes {
@@ -48,23 +23,6 @@
     transition: color 3s ease;
   }
   .hover-eyes:hover {
-    color: black;
-  }
-
-  .filter-btn {
-    background: white;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: none;
-    font-weight: bold;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 3s ease, color 3s ease;
-  }
-  .filter-btn:hover,
-  .filter-btn.active {
-    background-color: #39ff14;
     color: black;
   }
 </style>
@@ -117,12 +75,10 @@
       const filter = btn.getAttribute('data-filter');
       const images = document.querySelectorAll('.gallery-item');
       const isActive = btn.classList.contains('active');
-      btn.classList.toggle('active');
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
 
       if (!isActive) {
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          if (b !== btn) b.classList.remove('active');
-        });
+        btn.classList.add('active');
         images.forEach(img => {
           if (filter === 'all' || img.classList.contains(filter)) {
             img.style.display = 'inline-block';
@@ -130,11 +86,6 @@
             img.style.display = 'none';
           }
         });
-      } else {
-        images.forEach(img => img.style.display = 'inline-block');
-      }
-    });
-  });
       } else {
         images.forEach(img => img.style.display = 'inline-block');
       }
