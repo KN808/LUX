@@ -134,7 +134,7 @@
 </div>
   <div class="filters" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
     $1$2 transition: transform 0.3s ease; $3>All</button>
-    $1 onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"$2Minimalistic</button>
+    <button class="filter-btn" data-filter="minimalistic" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Minimalistic</button>
     <button class="filter-btn" data-filter="photography" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer;" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Photography</button>
     <button class="filter-btn" data-filter="cartoon" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer;">Cartoon</button>
     </div>
@@ -300,31 +300,31 @@
     item.addEventListener('drop', handleDrop);
     item.addEventListener('dragend', handleDragEnd);
   });
-});
+}
   });
   }
 
   function saveGalleryOrder() {
-    const order = Array.from(galleryGrid.children).map(img => img.src);
-    localStorage.setItem('galleryOrder', JSON.stringify({ order, timestamp: Date.now() }));
+  const order = Array.from(galleryGrid.children).map(img => img.src);
+  localStorage.setItem('galleryOrder', JSON.stringify({ order, timestamp: Date.now() }));
+  localStorage.setItem('galleryLock', Date.now());
+}
     localStorage.setItem('galleryLock', Date.now());
   }));
   }
 
   function loadGalleryOrder() {
-    const saved = JSON.parse(localStorage.getItem('galleryOrder'));
-    if (saved && Date.now() - saved.timestamp < 60000) {
-      const orderedImages = saved.order.map(src => {
-        const img = Array.from(galleryImages).find(i => i.src === src);
-        return img ? img.cloneNode(true) : null;
-      }).filter(Boolean);
-      galleryGrid.innerHTML = '';
-      orderedImages.forEach(img => galleryGrid.appendChild(img));
-    }
-  }).filter(Boolean);
-      galleryGrid.innerHTML = '';
-      orderedImages.forEach(img => galleryGrid.appendChild(img));
-      addDnDHandlers();
+  const saved = JSON.parse(localStorage.getItem('galleryOrder'));
+  if (saved && Date.now() - saved.timestamp < 60000) {
+    const orderedImages = saved.order.map(src => {
+      const img = Array.from(galleryImages).find(i => i.src === src);
+      return img ? img.cloneNode(true) : null;
+    }).filter(Boolean);
+    galleryGrid.innerHTML = '';
+    orderedImages.forEach(img => galleryGrid.appendChild(img));
+    addDnDHandlers();
+  }
+}
     }
   }
 
@@ -358,7 +358,7 @@ function updateCountdown() {
 }
 setInterval(updateCountdown, 100);
 
-loadGalleryOrder(););
+loadGalleryOrder();
   }
 
   addDnDHandlers();
