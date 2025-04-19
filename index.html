@@ -116,10 +116,7 @@
 </header>
 
 <section id="gallery" class="section" style="background-color: black; color: white; text-align: center; padding: 0 40px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin: 0 0 10px;">
-  <span style="font-size: 14px; font-weight: bold; color: white;">Fav</span>
   
-</div>
   <div class="filters" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
     <button class="filter-btn" data-filter="all" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">All</button>
     <button class="filter-btn" data-filter="minimalistic" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Minimalistic</button>
@@ -127,7 +124,9 @@
     <button class="filter-btn" data-filter="cartoon" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Cartoon</button>
     </div>
   <div class="gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; justify-items: center;" id="gallery-grid">
-    <img src="images/chips4.png" class="gallery-item" alt="Cartoon style chips artwork 4" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto; transition: transform 0.3s ease; cursor: pointer;" />
+    <div style="position: relative; display: inline-block;">
+  <span style="font-size: 14px; font-weight: bold; color: white; position: absolute; top: -16px; left: 0px;">Fav</span>
+  $1</div>
       <img src="images/chips2.png" class="gallery-item " alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto; transition: transform 0.3s ease; cursor: pointer;" />
     <img src="images/braille1.png" class="gallery-item" alt="Minimalistic braille concept art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
