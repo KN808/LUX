@@ -44,6 +44,19 @@
     transition: transform 0.3s ease;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   }
+@keyframes blinkRed {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes blinkGreen {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 1; }
+  75% { opacity: 0; }
+  100% { opacity: 1; }
+}
 </style>
 <style>
   .gallery-item {
@@ -57,7 +70,10 @@
 </head>
 <body style="background-color: black; color: #ffffff; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0;">
   <header style="background-color: black; text-align: center; padding: 80px 20px; position: relative;">
+  <div style="position: relative; display: inline-block;">
   <h1 class="zoom-on-hover" style="font-size: 100px; margin: 0; font-weight: bold; letter-spacing: 2px; transition: color 3s ease;">LUX</h1>
+  <div id="timer" style="position: absolute; left: 30%; top: 15%; transform: rotate(-90deg); font-size: 12px; color: red; font-family: monospace; font-weight: bold; animation: blinkRed 1s infinite;">60:00</div>
+</div>
   <p style="font-size: 24px; margin-top: 10px; font-style: italic;"><span class="zoom-on-hover">GOOSEBUMPS</span> <span class="zoom-on-hover">FOR</span> <span class="zoom-on-hover hover-eyes">YOUR</span> <span class="zoom-on-hover hover-eyes">EYES</span></p>
   
   <a href="https://www.instagram.com/scharnofski" target="_blank" style="position: absolute; top: 20px; right: 30px; background: white; color: black; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px;">Contact</a>
@@ -218,6 +234,7 @@
       this.insertAdjacentHTML('beforebegin', e.dataTransfer.getData('text/html'));
       this.parentNode.removeChild(dragSrcEl);
       addDnDHandlers();
+      saveGalleryOrder();
     }
     return false;
   }
@@ -227,6 +244,7 @@
   }
 
   function addDnDHandlers() {
+    if (isDragLocked()) return;
     const items = galleryGrid.querySelectorAll('.gallery-item');
     items.forEach(item => {
       item.setAttribute('draggable', 'true');
@@ -235,6 +253,64 @@
       item.addEventListener('drop', handleDrop);
       item.addEventListener('dragend', handleDragEnd);
     });
+  });
+  }
+
+  function saveGalleryOrder() {
+    const order = Array.from(galleryGrid.children).map(img => img.src);
+    localStorage.setItem('galleryOrder', JSON.stringify({ order, timestamp: Date.now() }));
+    localStorage.setItem('galleryLock', Date.now());
+  }));
+  }
+
+  function loadGalleryOrder() {
+    const saved = JSON.parse(localStorage.getItem('galleryOrder'));
+    if (saved && Date.now() - saved.timestamp < 60000) {
+      const orderedImages = saved.order.map(src => {
+        const img = Array.from(galleryImages).find(i => i.src === src);
+        return img ? img.cloneNode(true) : null;
+      }).filter(Boolean);
+      galleryGrid.innerHTML = '';
+      orderedImages.forEach(img => galleryGrid.appendChild(img));
+    }
+  }).filter(Boolean);
+      galleryGrid.innerHTML = '';
+      orderedImages.forEach(img => galleryGrid.appendChild(img));
+      addDnDHandlers();
+    }
+  }
+
+  function isDragLocked() {
+  const lock = localStorage.getItem('galleryLock');
+  return lock && Date.now() - parseInt(lock, 10) < 60000;
+}
+
+function updateCountdown() {
+  const timer = document.getElementById('timer');
+  const lock = localStorage.getItem('galleryLock');
+  if (!lock) return;
+  const remaining = 60000 - (Date.now() - parseInt(lock, 10));
+  if (remaining > 0) {
+    const sec = Math.floor(remaining / 1000);
+    const ms = Math.floor((remaining % 1000) / 10);
+    timer.textContent = `${sec.toString().padStart(2, '0')}:${ms.toString().padStart(2, '0')}`;
+    if (remaining < 10000) {
+      timer.style.color = '#39ff14';
+      timer.style.animation = 'blinkGreen 0.5s infinite';
+    } else {
+      timer.style.color = 'red';
+      timer.style.animation = 'blinkRed 1s infinite';
+    }
+  } else {
+    timer.textContent = '60:00';
+    timer.style.animation = 'none';
+    timer.style.color = 'white';
+  }
+}
+setInterval(updateCountdown, 100);
+
+loadGalleryOrder();
+addDnDHandlers(););
   }
 
   addDnDHandlers();
