@@ -16,64 +16,87 @@
   }
 
   h1 {
+    font-size: 100px;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: color 3s ease;
+  }
+
   h1:hover {
     color: #39ff14;
   }
-.zoom-on-hover {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-.zoom-on-hover:hover {
-  transform: scale(1.1);
-}
 
-<style>
+  .zoom-on-hover {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .zoom-on-hover:hover {
+    transform: scale(1.1);
+  }
+
   .hover-eyes {
     color: white;
     transition: color 3s ease;
   }
+
   .hover-eyes:hover {
     color: black;
   }
-.gallery-item:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-  }
-.filter-btn:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-@keyframes blinkRed {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
 
-@keyframes blinkGreen {
-  0% { opacity: 1; }
-  25% { opacity: 0; }
-  50% { opacity: 1; }
-  75% { opacity: 0; }
-  100% { opacity: 1; }
-}
-.gallery-item.drag-over {
+  .gallery-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.05);
+  }
+
+  .gallery-item.dragElem {
+    opacity: 0.5;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     border: 2px dashed #39ff14;
   }
-@keyframes blinkRed {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
 
-@keyframes blinkGreen {
-  0% { opacity: 1; }
-  25% { opacity: 0; }
-  50% { opacity: 1; }
-  75% { opacity: 0; }
-  100% { opacity: 1; }
-}
+  .gallery-item.drag-over {
+    border: 2px dashed #39ff14;
+  }
 
+  .filter-btn {
+    background: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+
+  @keyframes blinkRed {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes blinkGreen {
+    0% { opacity: 1; }
+    25% { opacity: 0; }
+    50% { opacity: 1; }
+    75% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 </style>
 <style>
   .gallery-item {
