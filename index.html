@@ -102,7 +102,7 @@
 <body style="background-color: black; color: #ffffff; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0;">
   <header style="background-color: black; text-align: center; padding: 80px 20px; position: relative;">
   <h1 class="zoom-on-hover" style="font-size: 100px; margin: 0; font-weight: bold; letter-spacing: 2px; transition: color 3s ease;">LUX</h1>
-  <div id="timer" style="margin: 30px auto 20px; font-size: 28px; color: red; font-family: monospace; font-weight: bold; animation: blinkRed 1s infinite; text-align: center;">60:00</div>
+  
   
 </div>
   <p style="font-size: 24px; margin-top: 10px; font-style: italic;">
@@ -242,94 +242,7 @@ lightbox.addEventListener('touchend', (e) => {
   if (touchEndX > touchStartX + 50) updateLightbox(currentIndex - 1);
 });
 
-// Drag & Drop
-const galleryGrid = document.getElementById('gallery-grid');
-let dragSrcEl = null;
 
-function handleDragStart(e) {
-  dragSrcEl = this;
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/html', this.outerHTML);
-  this.classList.add('dragElem');
-}
-
-function handleDragOver(e) {
-  if (e.preventDefault) e.preventDefault();
-  this.classList.add('drag-over');
-  return false;
-}
-
-function handleDrop(e) {
-  if (e.stopPropagation) e.stopPropagation();
-  if (dragSrcEl !== this) {
-    this.insertAdjacentHTML('beforebegin', e.dataTransfer.getData('text/html'));
-    this.parentNode.removeChild(dragSrcEl);
-    addDnDHandlers();
-    saveGalleryOrder();
-  }
-  return false;
-}
-
-function handleDragEnd() {
-  this.classList.remove('dragElem');
-  document.querySelectorAll('.gallery-item').forEach(el => el.classList.remove('drag-over'));
-}
-
-function addDnDHandlers() {
-  const items = galleryGrid.querySelectorAll('.gallery-item');
-  items.forEach(item => {
-    item.setAttribute('draggable', 'true');
-    item.addEventListener('dragstart', handleDragStart);
-    item.addEventListener('dragover', handleDragOver);
-    item.addEventListener('drop', handleDrop);
-    item.addEventListener('dragend', handleDragEnd);
-  });
-}
-
-function saveGalleryOrder() {
-  const order = Array.from(galleryGrid.children).map(img => img.src);
-  localStorage.setItem('galleryOrder', JSON.stringify({ order, timestamp: Date.now() }));
-  localStorage.setItem('galleryLock', Date.now());
-}
-
-function loadGalleryOrder() {
-  const saved = JSON.parse(localStorage.getItem('galleryOrder'));
-  if (saved && Date.now() - saved.timestamp < 60000) {
-    const orderedImages = saved.order.map(src => {
-      const img = Array.from(document.querySelectorAll('.gallery-item')).find(i => i.src === src);
-      return img ? img.cloneNode(true) : null;
-    }).filter(Boolean);
-    galleryGrid.innerHTML = '';
-    orderedImages.forEach(img => galleryGrid.appendChild(img));
-  }
-  addDnDHandlers();
-}
-
-function updateCountdown() {
-  const timer = document.getElementById('timer');
-  const lock = localStorage.getItem('galleryLock');
-  if (!lock) return;
-  const remaining = 60000 - (Date.now() - parseInt(lock, 10));
-  if (remaining > 0) {
-    const sec = Math.floor(remaining / 1000);
-    const ms = Math.floor((remaining % 1000) / 10);
-    timer.textContent = `${sec.toString().padStart(2, '0')}:${ms.toString().padStart(2, '0')}`;
-    if (remaining < 10000) {
-      timer.style.color = '#39ff14';
-      timer.style.animation = 'blinkGreen 0.5s infinite';
-    } else {
-      timer.style.color = 'red';
-      timer.style.animation = 'blinkRed 1s infinite';
-    }
-  } else {
-    timer.textContent = '60:00';
-    timer.style.animation = 'none';
-    timer.style.color = 'white';
-  }
-}
-
-setInterval(updateCountdown, 100);
-loadGalleryOrder();
 </script>
 </body>
 </html>
