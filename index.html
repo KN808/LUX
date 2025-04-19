@@ -60,6 +60,20 @@
 .gallery-item.drag-over {
     border: 2px dashed #39ff14;
   }
+@keyframes blinkRed {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes blinkGreen {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 1; }
+  75% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 </style>
 <style>
   .gallery-item {
@@ -76,8 +90,8 @@
 </head>
 <body style="background-color: black; color: #ffffff; font-family: 'Helvetica Neue', sans-serif; margin: 0; padding: 0;">
   <header style="background-color: black; text-align: center; padding: 80px 20px; position: relative;">
-  <div style="position: relative; display: inline-block;">
-  <h1 class="zoom-on-hover" style="font-size: 100px; margin: 0; font-weight: bold; letter-spacing: 2px; transition: color 3s ease;">LUX</h1>
+  $1
+  <div id="timer" style="margin: 30px auto 20px; font-size: 28px; color: red; font-family: monospace; font-weight: bold; animation: blinkRed 1s infinite; text-align: center;">60:00</div>
   
 </div>
   <p style="font-size: 24px; margin-top: 10px; font-style: italic;"><span class="zoom-on-hover">GOOSEBUMPS</span> <span class="zoom-on-hover">FOR</span> <span class="zoom-on-hover hover-eyes">YOUR</span> <span class="zoom-on-hover hover-eyes">EYES</span></p>
@@ -86,19 +100,16 @@
 </header>
 
 <section id="gallery" class="section" style="background-color: black; color: white; text-align: center; padding: 0 40px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin: 0 0 10px;">
-    <span style="font-size: 14px; font-weight: bold; color: white;">Fav</span>
-    <span style="font-size: 12px; color: white;">🔀 Drag & Drop</span>
-  </div>
+  <div style="margin: 0 0 10px;"><span style="font-size: 14px; font-weight: bold; color: white;">Fav</span></div>
   <div class="filters" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-    <button class="filter-btn" data-filter="all" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer;">All</button>
-    <button class="filter-btn" data-filter="minimalistic" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer;">Minimalistic</button>
+    $1$2 transition: transform 0.3s ease; $3>All</button>
+    $1 onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"$2Minimalistic</button>
     <button class="filter-btn" data-filter="photography" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer;">Photography</button>
     <button class="filter-btn" data-filter="cartoon" style="background: white; color: black; padding: 10px 20px; border-radius: 30px; border: none; font-weight: bold; font-size: 14px; cursor: pointer;">Cartoon</button>
     </div>
   <div class="gallery" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; justify-items: center;" id="gallery-grid">
     <img src="images/chips4.png" class="gallery-item" alt="Cartoon style chips artwork 4" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto; transition: transform 0.3s ease; cursor: pointer;" />
-      <img src="images/chips2.png" class="gallery-item $1humerous$2" alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
+      <img src="images/chips2.png" class="gallery-item $1humerous$2" alt="Funny photography-style chips illustration" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto; transition: transform 0.3s ease; cursor: pointer;" />
     <img src="images/braille1.png" class="gallery-item" alt="Minimalistic braille concept art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kvape2.png" class="gallery-item photography minimalistic eye-catcher" alt="Photography of vape product" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
     <img src="images/83kpills1.png" class="gallery-item eye-catcher photography" alt="Pills photo art" style="box-shadow: 0 0 20px rgba(255,255,255,0.2); border-radius: 12px; max-width: 300px; width: 100%; height: auto;" />
@@ -291,6 +302,30 @@
 }
 
 
+
+function updateCountdown() {
+  const timer = document.getElementById('timer');
+  const lock = localStorage.getItem('galleryLock');
+  if (!lock) return;
+  const remaining = 60000 - (Date.now() - parseInt(lock, 10));
+  if (remaining > 0) {
+    const sec = Math.floor(remaining / 1000);
+    const ms = Math.floor((remaining % 1000) / 10);
+    timer.textContent = `${sec.toString().padStart(2, '0')}:${ms.toString().padStart(2, '0')}`;
+    if (remaining < 10000) {
+      timer.style.color = '#39ff14';
+      timer.style.animation = 'blinkGreen 0.5s infinite';
+    } else {
+      timer.style.color = 'red';
+      timer.style.animation = 'blinkRed 1s infinite';
+    }
+  } else {
+    timer.textContent = '60:00';
+    timer.style.animation = 'none';
+    timer.style.color = 'white';
+  }
+}
+setInterval(updateCountdown, 100);
 
 loadGalleryOrder(););
   }
